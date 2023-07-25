@@ -1,0 +1,7 @@
+name: "my_dbt_project"
+version: "1.0.0"
+config-version: 2
+profile: "bigquery"
+models:
+  my_dbt_project:
+    +materialized: table
