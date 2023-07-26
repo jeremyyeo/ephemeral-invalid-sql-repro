@@ -26,4 +26,4 @@ jobs:
       - name: Check dependency versions
         run: pip freeze
       - name: Run dbt project
-        run: dbt --debug build --profiles-dir $WORK_DIR/.dbt --project-dir $WORK_DIR --threads 32
+        run: dbt --debug build --profiles-dir $WORK_DIR/.dbt --project-dir $WORK_DIR --threads 64
