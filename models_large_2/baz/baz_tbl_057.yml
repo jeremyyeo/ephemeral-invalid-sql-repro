@@ -1,0 +1,8 @@
+
+version: 2
+models:
+  - name: baz_tbl_057
+    columns:
+      - name: uid
+        tests:
+          - not_null

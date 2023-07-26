@@ -11,7 +11,7 @@ jobs:
       WORK_DIR: ${{ github.workspace }}
       SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
       SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-      DBT_MODEL_PATHS: models_large
+      DBT_MODEL_PATHS: models_large_2
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3

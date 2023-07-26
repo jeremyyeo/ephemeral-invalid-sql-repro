@@ -1,0 +1,8 @@
+
+version: 2
+models:
+  - name: bar_tbl_096
+    columns:
+      - name: uid
+        tests:
+          - not_null
