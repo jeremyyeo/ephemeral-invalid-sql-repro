@@ -5,3 +5,5 @@ profile: "snowflake"
 models:
   my_dbt_project:
     +materialized: table
+
+model-paths: ['{{ env_var("DBT_MODEL_PATHS", "models") }}']
