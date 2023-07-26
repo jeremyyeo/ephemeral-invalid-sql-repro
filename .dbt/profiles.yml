@@ -21,3 +21,4 @@ snowflake:
       role: transformer
       schema: "dbt_jyeo_{{ env_var('OS_VERSION') }}"
       database: development
+      threads: 8
