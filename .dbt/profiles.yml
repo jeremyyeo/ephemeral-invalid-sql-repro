@@ -8,3 +8,15 @@ bigquery:
       project: cse-sandbox-319708
       keyfile: "{{ env_var('WORK_DIR') }}/credentials.json"
       threads: 8
+
+snowflake:
+  target: default
+  outputs:
+    default:
+      type: snowflake
+      account: ska67070
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      warehouse: transforming
+      role: transformer
+      schema: "dbt_jyeo_{{ env_var('OS_VERSION') }}"
