@@ -1,13 +1,13 @@
-name: ubuntu-20.04
+name: ubuntu-22.04
 on:
   workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
 jobs:
   run-dbt:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
-      OS_VERSION: ubuntu_20_04
+      OS_VERSION: ubuntu_22_04
       WORK_DIR: ${{ github.workspace }}
       BIGQUERY_TEST_SERVICE_ACCOUNT_JSON: ${{ secrets.BIGQUERY_TEST_SERVICE_ACCOUNT_JSON }}
     steps:

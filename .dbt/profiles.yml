@@ -7,3 +7,4 @@ bigquery:
       dataset: "dbt_jyeo_{{ env_var('OS_VERSION') }}"
       project: cse-sandbox-319708
       keyfile: "{{ env_var('WORK_DIR') }}/credentials.json"
+      threads: 8

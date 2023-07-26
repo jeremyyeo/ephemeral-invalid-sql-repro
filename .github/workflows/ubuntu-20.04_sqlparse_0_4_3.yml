@@ -1,4 +1,4 @@
-name: ubuntu-20.04
+name: ubuntu-20.04 / sqlparse==0.4.3
 on:
   workflow_dispatch:
   schedule:
@@ -7,7 +7,7 @@ jobs:
   run-dbt:
     runs-on: ubuntu-20.04
     env:
-      OS_VERSION: ubuntu_20_04
+      OS_VERSION: ubuntu_22_04_sqlparse_0_4_3
       WORK_DIR: ${{ github.workspace }}
       BIGQUERY_TEST_SERVICE_ACCOUNT_JSON: ${{ secrets.BIGQUERY_TEST_SERVICE_ACCOUNT_JSON }}
     steps:
@@ -24,6 +24,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install dbt-bigquery~=1.5.0
+          pip install sqlparse==0.4.3
       - name: Check dependency versions
         run: pip freeze
       - name: Run dbt project
