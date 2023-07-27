@@ -1,0 +1,31 @@
+name: ubuntu-20.04-snowflake-main
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+jobs:
+  run-dbt:
+    runs-on: ubuntu-20.04
+    env:
+      OS_VERSION: ubuntu_20_04
+      WORK_DIR: ${{ github.workspace }}
+      SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+      SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      DBT_ADAPTER: snowflake
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.8"
+      - name: Check working directory
+        run: echo $WORK_DIR
+      - name: Install dependencies from dbt-snowflake repository
+        run: |
+          python -m pip install --upgrade pip
+          git clone https://github.com/dbt-labs/dbt-snowflake.git
+          cd dbt-snowflake
+          make dev
+      - name: Check dependency versions
+        run: pip freeze
+      - name: Run dbt project
+        run: dbt --debug build --profiles-dir $WORK_DIR/.dbt --project-dir $WORK_DIR --threads 8
