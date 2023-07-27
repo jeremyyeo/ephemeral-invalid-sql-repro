@@ -1,8 +1,8 @@
-name: ubuntu-20.04-postgres
+name: ubuntu-20.04-postgres-core-fecde23
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
+  # schedule:
+  #   - cron: "*/5 * * * *"
 jobs:
   run-dbt:
     runs-on: ubuntu-20.04
@@ -29,10 +29,13 @@ jobs:
           python-version: "3.8"
       - name: Check working directory
         run: echo $WORK_DIR
-      - name: Install dependencies
+      - name: Install dependencies from dbt-core repository
         run: |
           python -m pip install --upgrade pip
-          pip install dbt-postgres~=1.5.0
+          git clone https://github.com/dbt-labs/dbt-core.git
+          cd dbt-core
+          git checkout fecde23
+          make dev
       - name: Check dependency versions
         run: pip freeze
       - name: Run dbt project
