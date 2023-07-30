@@ -1,8 +1,8 @@
 name: ubuntu-20.04-postgres
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
+  # schedule:
+  #   - cron: "*/5 * * * *"
 jobs:
   run-dbt:
     runs-on: ubuntu-20.04
